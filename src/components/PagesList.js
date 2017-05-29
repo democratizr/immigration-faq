@@ -13,28 +13,27 @@ const List = glamorous.ul({
 
 const PagesList = ({ pages }) => (
   <div>
-    { pages.length ?
+    {pages.length ?
       (
         <List>
-          {
-          pages.map(({ __url, title }) => (
-            <li key={ __url }>
-              <Link to={ __url }>{title}</Link>
+          {pages.map(({ __url: url, title }) => (
+            <li key={url}>
+              <Link to={url}>{title}</Link>
             </li>
-          ))
-        }
+          ))}
         </List>
       )
-      : "No posts yet." }
+      : 'No posts yet.'}
   </div>
-)
+);
 
 const PageData = PropTypes.shape({
+  __url: PropTypes.string.required,
   title: PropTypes.string.required,
 });
 
 PagesList.propTypes = {
   pages: PropTypes.arrayOf(PageData).isRequired,
-}
+};
 
-export default PagesList
+export default PagesList;

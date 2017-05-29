@@ -6,7 +6,7 @@ import Page from './Page';
 
 const Homepage = (props) => {
   return (
-    <Page { ...props }>
+    <Page {...props}>
       <FAQs />
     </Page>
   )

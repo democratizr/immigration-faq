@@ -2,7 +2,7 @@ import glamorous from 'glamorous';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import Page from "./Page"
+import Page from './Page';
 
 const ErrorText = glamorous.p({
   textAlign: 'center',

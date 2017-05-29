@@ -44,54 +44,53 @@ const Page = (
     children,
   }
 ) => {
-  warning(
-    typeof head.title === "string",
-    `Your page '${ __filename }' needs a title`
-  )
-
-  const metaTitle = head.metaTitle ? head.metaTitle : head.title
+  const metaTitle = head.metaTitle ? head.metaTitle : head.title;
 
   const meta = [
-    { property: "og:type", content: "article" },
-    { property: "og:title", content: metaTitle },
+    { property: 'og:type', content: 'article' },
+    { property: 'og:title', content: metaTitle },
     {
-      property: "og:url",
+      property: 'og:url',
       content: joinUri(process.env.PHENOMIC_USER_URL, __url),
     },
-    { property: "og:description", content: head.description },
-    { name: "twitter:card", content: "summary" },
-    { name: "twitter:title", content: metaTitle },
-    { name: "twitter:description", content: head.description },
-    { name: "description", content: head.description },
-  ]
+    { property: 'og:description', content: head.description },
+    { name: 'twitter:card', content: 'summary' },
+    { name: 'twitter:title', content: metaTitle },
+    { name: 'twitter:description', content: head.description },
+    { name: 'description', content: head.description },
+  ];
 
   return (
     <BasePage>
-      <Helmet title={ metaTitle } meta={ meta } />
+      <Helmet title={metaTitle} meta={meta} />
       <PageHeader>
         <ContentWrapper>
-          <Title>{ head.title }</Title>
+          <Title>{head.title}</Title>
         </ContentWrapper>
       </PageHeader>
       <PageContent>
-        { header }
-        { isLoading || <BodyContainer>{ body }</BodyContainer> }
-        { children }
-        { footer }
+        {header}
+        {isLoading || <BodyContainer>{ body }</BodyContainer>}
+        {children}
+        {footer}
       </PageContent>
     </BasePage>
-  )
-}
+  );
+};
+
+const HeadProps = PropTypes.shape({
+  title: PropTypes.string.isRequired,
+});
 
 Page.propTypes = {
   children: PropTypes.node,
   isLoading: PropTypes.bool,
   __filename: PropTypes.string,
   __url: PropTypes.string,
-  head: PropTypes.object.isRequired,
+  head: HeadProps.isRequired,
   body: PropTypes.string,
   header: PropTypes.element,
   footer: PropTypes.element,
-}
+};
 
-export default Page
+export default Page;

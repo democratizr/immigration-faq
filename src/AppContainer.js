@@ -71,14 +71,14 @@ const AppContainer = (props) => (
       <GlobalStyles />
       <DefaultHeadMeta />
       <Content>
-        { props.children }
+        {props.children}
       </Content>
     </Container>
   </ThemeProvider>
-)
+);
 
 AppContainer.propTypes = {
   children: PropTypes.node,
-}
+};
 
-export default AppContainer
+export default AppContainer;
