@@ -16,8 +16,7 @@ const BasePage = glamorous.div({
 const PageHeader = glamorous.div((props, theme) => ({
   display: 'flex',
   flexDirection: 'column',
-  padding: '1rem',
-  textAlign: 'center',
+  padding: '0.5rem',
   ...theme.colors.brandInverted,
 }));
 
@@ -68,10 +67,7 @@ const Page = (
 
   return (
     <BasePage>
-      <Helmet
-        title={ metaTitle }
-        meta={ meta }
-      />
+      <Helmet title={ metaTitle } meta={ meta } />
       <PageHeader>
         <ContentWrapper>
           <Title>{ head.title }</Title>

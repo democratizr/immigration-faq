@@ -1,9 +1,7 @@
 import glamorous from 'glamorous';
+import { Link } from 'phenomic';
 import PropTypes from 'prop-types';
 import React from 'react';
-
-import ContentWrapper from './ContentWrapper';
-import PagePreview from './PagePreview';
 
 
 const List = glamorous.ul({
@@ -13,25 +11,23 @@ const List = glamorous.ul({
   padding: 0,
 });
 
-const PagesList = ({ pages }) => {
-  return (
-    <ContentWrapper>
-      { pages.length ?
-        (
-          <List>
-            {
-            pages.map((page) => (
-              <li key={ page.title }>
-                <PagePreview { ...page } />
-              </li>
-            ))
-          }
-          </List>
-        )
-        : "No posts yet." }
-    </ContentWrapper>
-  )
-}
+const PagesList = ({ pages }) => (
+  <div>
+    { pages.length ?
+      (
+        <List>
+          {
+          pages.map(({ __url, title }) => (
+            <li key={ __url }>
+              <Link to={ __url }>{title}</Link>
+            </li>
+          ))
+        }
+        </List>
+      )
+      : "No posts yet." }
+  </div>
+)
 
 const PageData = PropTypes.shape({
   title: PropTypes.string.required,

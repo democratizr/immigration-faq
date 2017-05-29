@@ -34,8 +34,9 @@ body {
 
 
 a {
-  color: ${theme.colors.navigation.color};
+  font-weight: bold;
   text-decoration: none;
+  color: ${theme.colors.navigation.color};
 }
 
 a:hover {

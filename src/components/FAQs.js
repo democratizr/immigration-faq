@@ -12,7 +12,7 @@ const FAQs = (props, { collection }) => {
   });
 
   return (
-    <PagesList pages={ faqs } />
+    <PagesList pages={faqs} />
   );
 };
 
